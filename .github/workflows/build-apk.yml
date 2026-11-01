@@ -32,18 +32,6 @@ jobs:
       - name: Sync web files to Android
         run: npx cap sync android
 
-      - name: Use logo as app icon (all densities)
-        run: |
-          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml || true
-          if [ -f www/logo-512.png ]; then
-            for d in android/app/src/main/res/mipmap-*/; do
-              if [ -d "$d" ]; then
-                cp www/logo-512.png "$d/ic_launcher.png" || true
-                cp www/logo-512.png "$d/ic_launcher_round.png" || true
-              fi
-            done
-          fi
-
       - name: Build debug APK
         run: |
           cd android
