@@ -34,6 +34,7 @@ jobs:
 
       - name: Use logo as app icon (all densities)
         run: |
+          rm -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml || true
           if [ -f www/logo-512.png ]; then
             for d in android/app/src/main/res/mipmap-*/; do
               if [ -d "$d" ]; then
