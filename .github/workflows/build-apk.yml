@@ -32,10 +32,10 @@ jobs:
       - name: Sync web files to Android
         run: npx cap sync android
 
-      - name: Use logo as app icon (best effort)
+      - name: Use logo as app icon (all densities)
         run: |
           if [ -f www/logo-512.png ]; then
-            for d in android/app/src/main/res/mipmap-xxxhdpi android/app/src/main/res/mipmap-xxhdpi; do
+            for d in android/app/src/main/res/mipmap-*/; do
               if [ -d "$d" ]; then
                 cp www/logo-512.png "$d/ic_launcher.png" || true
                 cp www/logo-512.png "$d/ic_launcher_round.png" || true
